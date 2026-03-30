@@ -41,7 +41,7 @@ void timer_handler() {
 }
 
 void enable_timer_interrupt() {
-    write_csr(mie, read_csr(mie) | (1 << /* YOUR CODE HERE */ ));
+    write_csr(mie, read_csr(mie) | (1 << MIE_MTIE_BIT ));
     /* Task 2.1 - Find the correct bit to set in mie register to enable
        timer interrupts */
 }
