@@ -51,11 +51,11 @@
  *   macros
  *******************************************************************************/
 #define read_csr(reg) ({ unsigned long __tmp; \
-  asm volatile ("csrr %0, " #reg : "=r"(__tmp)); \
-  __tmp; })
+    asm volatile ("csrr %0, " #reg : "=r"(__tmp)); \
+    __tmp; })
 
 #define write_csr(reg, val) ({ \
-  asm volatile ("csrw " #reg ", %0" :: "rK"(val)); })
+    asm volatile ("csrw " #reg ", %0" :: "rK"(val)); })
 
 /******************************************************************************
  *   eecs388 library api (similar to Arduino)
@@ -71,9 +71,9 @@ void delay_usec(int usec);
 
 void ser_init();
 void ser_write(char c);
-void ser_printline(char *str);
+void ser_printline(char* str);
 char ser_read();
-int  ser_readline(int n, char *str);
+int  ser_readline(int n, char* str);
 
 void pwm_init();
 void pwm_write(int gpio, int value);
