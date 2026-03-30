@@ -47,13 +47,13 @@ void enable_timer_interrupt() {
 }
 
 void enable_interrupt() {
-    // YOUR CODE HERE
+    write_csr(mstatus, read_csr(mstatus) | (1 << MSTATUS_MIE_BIT))
     /* Task 2.2 - Look at the enable_timer_interrupt() function for hints about
        how to write this function */
 }
 
 void disable_interrupt() {
-    // YOUR CODE HERE
+    write_csr(mstatus, read_csr(mstatus) & ~(1 << MSTATUS_MIE_BIT))
     /* Task 2.2 - Look at the enable_timer_interrupt() function for hints about
        how to write this function */
 }
