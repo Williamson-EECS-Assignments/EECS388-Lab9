@@ -34,7 +34,8 @@ void handle_trap() {
 }
 
 void timer_handler() {
-    // YOUR CODE HERE
+    intr_count++;
+    set_cycles(3277);
     /* Task 2.3 Increment the interrupt counter variable*/
     /* Task 2.3 Set the mtimecmpr register to a correct value to 
        generate an interrupt after 100ms */
@@ -47,13 +48,13 @@ void enable_timer_interrupt() {
 }
 
 void enable_interrupt() {
-    write_csr(mstatus, read_csr(mstatus) | (1 << MSTATUS_MIE_BIT))
+    write_csr(mstatus, read_csr(mstatus) | (1 << MSTATUS_MIE_BIT));
     /* Task 2.2 - Look at the enable_timer_interrupt() function for hints about
        how to write this function */
 }
 
 void disable_interrupt() {
-    write_csr(mstatus, read_csr(mstatus) & ~(1 << MSTATUS_MIE_BIT))
+    write_csr(mstatus, read_csr(mstatus) & ~(1 << MSTATUS_MIE_BIT));
     /* Task 2.2 - Look at the enable_timer_interrupt() function for hints about
        how to write this function */
 }

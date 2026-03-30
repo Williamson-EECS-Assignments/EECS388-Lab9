@@ -44,13 +44,13 @@ uint64_t get_cycles(void) {
 void delay(int msec) {
     uint64_t tend;
     tend = get_cycles() + msec * 32768 / 1000;
-    while (get_cycles() < tend) {}; 
+    while (get_cycles() < tend);
 }
 
 void delay_usec(int usec) {
-    uint64_t tend; 
+    uint64_t tend;
     tend = get_cycles() + (uint64_t)usec * 32768 / 1000000;
-    while (get_cycles() < tend) {}; 
+    while (get_cycles() < tend);
 }
 
 void ser_init() {
