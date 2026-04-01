@@ -34,15 +34,15 @@ void handle_trap() {
 }
 
 void timer_handler() {
-    intr_count++;
-    set_cycles(3277);
     /* Task 2.3 Increment the interrupt counter variable*/
+    intr_count++;
     /* Task 2.3 Set the mtimecmpr register to a correct value to 
-       generate an interrupt after 100ms */
+        generate an interrupt after 100ms */
+    set_cycles(get_cycles() + 3277);
 }
 
 void enable_timer_interrupt() {
-    write_csr(mie, read_csr(mie) | (1 << MIE_MTIE_BIT ));
+    write_csr(mie, read_csr(mie) | (1 << MIE_MTIE_BIT));
     /* Task 2.1 - Find the correct bit to set in mie register to enable
        timer interrupts */
 }
@@ -87,7 +87,7 @@ int main() {
     // enable global interrupt
     enable_interrupt(); 
 
-    // cause timer interrupt for some time in future 
+    // cause timer interrupt for some time in future
     set_cycles(get_cycles() + 40000);
 
     // main loop

@@ -26,9 +26,9 @@ void gpio_mode(int gpio, int mode) {
 void gpio_write(int gpio, int state) {
     uint32_t val = *(volatile uint32_t*) (GPIO_CTRL_ADDR + GPIO_OUTPUT_VAL);
     if (state == ON)
-        val |= (1<<gpio);
+        val |= (1 << gpio);
     else
-        val &= (~(1<<gpio));
+        val &= (~(1 << gpio));
     *(volatile uint32_t*) (GPIO_CTRL_ADDR + GPIO_OUTPUT_VAL) = val;
     return;
 }
